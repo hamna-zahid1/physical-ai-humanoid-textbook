@@ -1,3 +1,12 @@
+---
+title: Physical AI Backend
+emoji: 🤖
+colorFrom: blue
+colorTo: purple
+sdk: docker
+pinned: false
+---
+
 # Physical AI Humanoid Textbook RAG Chatbot Backend
 
 This is a FastAPI-based RAG (Retrieval-Augmented Generation) chatbot backend for the Physical AI Humanoid Textbook project. It uses Google's Gemini models for embeddings and generation, with Qdrant as the vector database.
