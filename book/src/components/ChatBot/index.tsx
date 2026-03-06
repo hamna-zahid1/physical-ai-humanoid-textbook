@@ -17,7 +17,6 @@ const ChatBot = () => {
   const handleSend = async () => {
     if (!inputValue.trim()) return;
 
-    // Add user message
     const userMessage = { text: inputValue, sender: 'user' } as const;
     setMessages(prev => [...prev, userMessage]);
     const question = inputValue;
@@ -25,7 +24,6 @@ const ChatBot = () => {
     setIsLoading(true);
 
     try {
-      // Send POST request to the backend
       const response = await fetch('https://hamnazahid-physical-ai-backend.hf.space/chat', {
         method: 'POST',
         headers: {
@@ -38,8 +36,13 @@ const ChatBot = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        const botMessage = { text: data.response || data.answer || 'No response received', sender: 'bot' } as const;
+        // Backend returns SSE format: "data: {...}\n\n"
+        const text = await response.text();
+        const jsonStr = text.replace(/^data:\s*/m, '').trim();
+        const data = JSON.parse(jsonStr);
+
+        const botText = data.response || data.answer || 'No response received';
+        const botMessage = { text: botText, sender: 'bot' } as const;
         setMessages(prev => [...prev, botMessage]);
       } else {
         const errorMessage = { text: 'Error: Could not get response from server', sender: 'bot' } as const;
@@ -77,7 +80,7 @@ const ChatBot = () => {
           border: 'none',
           fontSize: '24px',
           cursor: 'pointer',
-          zIndex: '1000',
+          zIndex: 1000,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -101,7 +104,7 @@ const ChatBot = () => {
             border: '1px solid #00d4ff',
             borderRadius: '8px',
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
-            zIndex: '1000',
+            zIndex: 1000,
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden',
@@ -162,6 +165,7 @@ const ChatBot = () => {
                   borderRadius: '8px',
                   margin: '4px 0',
                   maxWidth: '80%',
+                  wordBreak: 'break-word',
                 }}
               >
                 {message.text}
@@ -241,7 +245,6 @@ const ChatBot = () => {
         </div>
       )}
 
-      {/* Loading animation style */}
       <style>{`
         @keyframes bounce {
           0%, 100% { transform: scale(0.8); opacity: 0.7; }
