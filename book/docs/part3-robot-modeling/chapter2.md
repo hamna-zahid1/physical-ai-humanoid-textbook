@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# URDF and Robot Description
+# Chapter 8: URDF and Robot Description
 
 ## Overview
 

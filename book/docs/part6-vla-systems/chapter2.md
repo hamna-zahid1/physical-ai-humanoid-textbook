@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# VLA System Architectures and Implementation
+# Chapter 17: VLA System Architectures and Implementation
 
 ## Overview
 

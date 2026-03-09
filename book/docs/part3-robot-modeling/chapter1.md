@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Robot Kinematics and Dynamics
+# Chapter 7: Robot Kinematics and Dynamics
 
 ## Overview
 

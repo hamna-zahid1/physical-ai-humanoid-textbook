@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Humanoid Robot Integration and Deployment
+# Chapter 24: Introduction to Physical AI & Humanoid Robotics
 
 ## Overview
 

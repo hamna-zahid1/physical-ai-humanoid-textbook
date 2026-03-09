@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Simulation-to-Reality Transfer and Domain Randomization
+# Chapter 12: Simulation-to-Reality Transfer and Domain Randomization
 
 ## Overview
 

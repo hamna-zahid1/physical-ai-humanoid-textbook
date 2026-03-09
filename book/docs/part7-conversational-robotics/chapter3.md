@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Social Interaction and Human-Robot Communication
+# Chapter 21: Social Interaction and Human-Robot Communication
 
 ## Overview
 

@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Learning and Adaptation in Physical AI
+# Chapter 3: Introduction to Physical AI & Humanoid Robotics
 
 ## Overview
 

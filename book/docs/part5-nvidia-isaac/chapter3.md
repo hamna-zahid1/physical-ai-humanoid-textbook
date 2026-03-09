@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Isaac ROS: Accelerated Perception and Autonomy
+# Chapter 15: Isaac ROS: Accelerated Perception and Autonomy
 
 ## Overview
 

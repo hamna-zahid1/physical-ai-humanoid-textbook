@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# ROS 2 Architecture and Concepts
+# Chapter 4: Introduction to Physical AI & Humanoid Robotics
 
 ## Overview
 

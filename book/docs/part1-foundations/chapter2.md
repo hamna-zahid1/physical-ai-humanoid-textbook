@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Perception Systems in Physical AI
+# Chapter 2: Introduction to Physical AI & Humanoid Robotics
 
 ## Overview
 

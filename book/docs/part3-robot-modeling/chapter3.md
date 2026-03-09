@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Control Systems for Physical AI
+# Chapter 9: Control Systems for Physical AI
 
 ## Overview
 

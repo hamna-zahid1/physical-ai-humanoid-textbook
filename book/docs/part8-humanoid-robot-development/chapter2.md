@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Humanoid Locomotion and Balance Control
+# Chapter 23: Humanoid Locomotion and Balance Control
 
 ## Overview
 

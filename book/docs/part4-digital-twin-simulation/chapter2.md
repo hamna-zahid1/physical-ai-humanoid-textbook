@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Physics Simulation and Environment Modeling
+# Chapter 11: Physics Simulation and Environment Modeling
 
 ## Overview
 

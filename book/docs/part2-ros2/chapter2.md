@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# ROS 2 Communication Patterns and Message Types
+# Chapter 5: ROS 2 Communication Patterns and Message Types
 
 ## Overview
 

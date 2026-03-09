@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Digital Twin Fundamentals and Simulation Platforms
+# Chapter 10: Digital Twin Fundamentals and Simulation Platforms
 
 ## Overview
 

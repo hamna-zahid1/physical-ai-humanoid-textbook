@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# ROS 2 Navigation and Control Systems
+# Chapter 6: Introduction to Physical AI & Humanoid Robotics
 
 ## Overview
 

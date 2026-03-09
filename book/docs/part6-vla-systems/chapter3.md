@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# VLA Applications and Deployment Strategies
+# Chapter 18: VLA Applications and Deployment Strategies
 
 ## Overview
 

@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Vision-Language-Action Systems: Foundations
+# Chapter 16: Vision-Language-Action Systems: Foundations
 
 ## Overview
 

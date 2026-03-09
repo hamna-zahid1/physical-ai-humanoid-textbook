@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# NVIDIA Isaac Ecosystem Overview
+# Chapter 13: NVIDIA Isaac Ecosystem Overview
 
 ## Overview
 

@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Introduction to Physical AI & Humanoid Robotics
+# Chapter 1: Introduction to Physical AI & Humanoid Robotics
 
 ## Overview
 

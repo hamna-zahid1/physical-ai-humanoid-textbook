@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Humanoid Robot Design Principles
+# Chapter 22: Humanoid Robot Design Principles
 
 ## Overview
 

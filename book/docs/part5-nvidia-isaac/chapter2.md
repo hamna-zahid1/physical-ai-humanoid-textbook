@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Isaac Sim: Advanced Simulation Techniques
+# Chapter 14: Isaac Sim: Advanced Simulation Techniques
 
 ## Overview
 
