@@ -80,7 +80,7 @@ const Navbar = () => {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      borderBottom: scrolled ? `1px solid ${colors.border}` : 'none',
+      borderBottom: `1px solid ${colors.border}`,
       position: 'sticky',
       top: 0,
       zIndex: 1000,
@@ -98,10 +98,10 @@ const Navbar = () => {
         Physical AI
       </div>
       <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
-        <a href="#" style={{ color: colors.textSecondary, textDecoration: 'none', ...typography.subheading, fontSize: '14px' }}>Curriculum</a>
-        <a href="#" style={{ color: colors.textSecondary, textDecoration: 'none', ...typography.subheading, fontSize: '14px' }}>Resources</a>
-        <a href="#" style={{ color: colors.textSecondary, textDecoration: 'none', ...typography.subheading, fontSize: '14px' }}>Community</a>
-        <button style={{
+        <Link to="/docs/intro" style={{ color: colors.textSecondary, textDecoration: 'none', ...typography.subheading, fontSize: '14px' }}>Curriculum</Link>
+        <Link to="/docs" style={{ color: colors.textSecondary, textDecoration: 'none', ...typography.subheading, fontSize: '14px' }}>Resources</Link>
+        <a href="https://github.com/hamna-zahid1/physical-ai-humanoid-textbook" target="_blank" rel="noopener noreferrer" style={{ color: colors.textSecondary, textDecoration: 'none', ...typography.subheading, fontSize: '14px' }}>Community</a>
+        <Link to="/docs/part1-foundations/chapter1" style={{
           backgroundColor: 'transparent',
           color: colors.accent,
           border: `1px solid ${colors.accent}`,
@@ -111,13 +111,14 @@ const Navbar = () => {
           fontSize: '14px',
           ...typography.subheading,
           transition: 'all 0.3s ease',
+          textDecoration: 'none',
           ':hover': {
             backgroundColor: colors.accent,
             color: colors.darkBg
           }
         }}>
-          Personalize
-        </button>
+          Start Reading
+        </Link>
       </div>
     </nav>
   );
@@ -159,7 +160,7 @@ const HeroSection = () => (
       filter: 'blur(80px)',
       animation: 'pulse 12s ease-in-out infinite reverse'
     }} />
-    
+
     <div style={{ position: 'relative', zIndex: 1, maxWidth: '900px' }}>
       <div style={{
         backgroundColor: colors.accent + '10',
@@ -191,11 +192,11 @@ const HeroSection = () => (
         maxWidth: '700px',
         margin: '0 auto 50px'
       }}>
-        Dive deep into the core concepts of AI, robotics, and advanced control systems. 
+        Dive deep into the core concepts of AI, robotics, and advanced control systems.
         From foundational principles to cutting-edge humanoid development.
       </p>
       <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-        <button style={{
+        <Link to="/docs/intro" style={{
           backgroundColor: colors.accent,
           color: colors.darkBg,
           border: 'none',
@@ -206,14 +207,18 @@ const HeroSection = () => (
           ...typography.subheading,
           fontWeight: 600,
           transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+          textDecoration: 'none',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           ':hover': {
             transform: 'translateY(-2px)',
             boxShadow: `0 20px 30px ${colors.accent}30`
           }
         }}>
           Start Reading
-        </button>
-        <button style={{
+        </Link>
+        <Link to="/docs" style={{
           backgroundColor: 'transparent',
           color: colors.text,
           border: `1px solid ${colors.border}`,
@@ -223,13 +228,17 @@ const HeroSection = () => (
           fontSize: '16px',
           ...typography.subheading,
           transition: 'all 0.3s ease',
+          textDecoration: 'none',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           ':hover': {
             borderColor: colors.accent,
             color: colors.accent
           }
         }}>
           View Contents
-        </button>
+        </Link>
       </div>
     </div>
   </section>
@@ -451,14 +460,14 @@ const CurriculumCard = ({ title, description, link, index }) => {
 
 const CompleteCurriculumSection = () => {
   const curriculumParts = [
-    { title: 'Foundations', description: 'Core AI and robotics principles.', link: '/docs/part1-foundations' },
-    { title: 'ROS 2', description: 'Building robotic systems with ROS 2.', link: '/docs/part2-ros2' },
-    { title: 'Robot Modeling', description: 'Kinematics, dynamics, and control.', link: '/docs/part3-modeling' },
-    { title: 'Digital Twin', description: 'Virtual environments for testing.', link: '/docs/part4-digital-twin' },
-    { title: 'NVIDIA Isaac', description: 'Advanced simulation for AI.', link: '/docs/part5-isaac' },
-    { title: 'VLA Systems', description: 'Vision-Language-Action integration.', link: '/docs/part6-vla' },
-    { title: 'Conversational AI', description: 'Natural human-robot dialogue.', link: '/docs/part7-conversational' },
-    { title: 'Humanoid Dev', description: 'Building humanoid robots.', link: '/docs/part8-humanoid' },
+    { title: 'Foundations', description: 'Core AI and robotics principles.', link: '/docs/part1-foundations/chapter1' },
+    { title: 'ROS 2', description: 'Building robotic systems with ROS 2.', link: '/docs/part2-ros2/chapter1' },
+    { title: 'Robot Modeling', description: 'Kinematics, dynamics, and control.', link: '/docs/part3-robot-modeling/chapter1' },
+    { title: 'Digital Twin', description: 'Virtual environments for testing.', link: '/docs/part4-digital-twin-simulation/chapter1' },
+    { title: 'NVIDIA Isaac', description: 'Advanced simulation for AI.', link: '/docs/part5-nvidia-isaac/chapter1' },
+    { title: 'VLA Systems', description: 'Vision-Language-Action integration.', link: '/docs/part6-vla-systems/chapter1' },
+    { title: 'Conversational AI', description: 'Natural human-robot dialogue.', link: '/docs/part7-conversational-robotics/chapter1' },
+    { title: 'Humanoid Dev', description: 'Building humanoid robots.', link: '/docs/part8-humanoid-robot-development/chapter1' },
   ];
 
   return (
@@ -607,7 +616,7 @@ const CtaSection = () => (
         Join thousands of developers building the future of robotics.
       </p>
       <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-        <button style={{
+        <Link to="/docs/intro" style={{
           backgroundColor: colors.accent,
           color: colors.darkBg,
           border: 'none',
@@ -618,14 +627,18 @@ const CtaSection = () => (
           ...typography.subheading,
           fontWeight: 600,
           transition: 'all 0.3s ease',
+          textDecoration: 'none',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           ':hover': {
             transform: 'translateY(-2px)',
             boxShadow: `0 20px 30px ${colors.accent}30`
           }
         }}>
           Start Learning Now
-        </button>
-        <button style={{
+        </Link>
+        <Link to="/docs" style={{
           backgroundColor: 'transparent',
           color: colors.text,
           border: `1px solid ${colors.border}`,
@@ -635,13 +648,17 @@ const CtaSection = () => (
           fontSize: '16px',
           ...typography.subheading,
           transition: 'all 0.3s ease',
+          textDecoration: 'none',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           ':hover': {
             borderColor: colors.accent,
             color: colors.accent
           }
         }}>
           View Curriculum
-        </button>
+        </Link>
       </div>
     </div>
   </section>
@@ -670,9 +687,14 @@ const Footer = () => (
       <div>
         <h4 style={{ ...typography.subheading, color: colors.text, marginBottom: '20px', fontSize: '16px' }}>Curriculum</h4>
         <ul style={{ listStyle: 'none', padding: 0 }}>
-          {['Foundations', 'ROS 2', 'Modeling', 'Simulation'].map(item => (
-            <li key={item} style={{ marginBottom: '10px' }}>
-              <a href="#" style={{ ...typography.body, color: colors.textSecondary, textDecoration: 'none', fontSize: '14px' }}>{item}</a>
+          {[
+            { label: 'Introduction', link: '/docs/intro' },
+            { label: 'Foundations', link: '/docs/part1-foundations/chapter1' },
+            { label: 'ROS 2', link: '/docs/part2-ros2/chapter1' },
+            { label: 'Modeling', link: '/docs/part3-robot-modeling/chapter1' }
+          ].map(item => (
+            <li key={item.label} style={{ marginBottom: '10px' }}>
+              <Link to={item.link} style={{ ...typography.body, color: colors.textSecondary, textDecoration: 'none', fontSize: '14px' }}>{item.label}</Link>
             </li>
           ))}
         </ul>
@@ -680,9 +702,14 @@ const Footer = () => (
       <div>
         <h4 style={{ ...typography.subheading, color: colors.text, marginBottom: '20px', fontSize: '16px' }}>Resources</h4>
         <ul style={{ listStyle: 'none', padding: 0 }}>
-          {['Documentation', 'Community', 'GitHub', 'Updates'].map(item => (
-            <li key={item} style={{ marginBottom: '10px' }}>
-              <a href="#" style={{ ...typography.body, color: colors.textSecondary, textDecoration: 'none', fontSize: '14px' }}>{item}</a>
+          {[
+            { label: 'Documentation', link: '/docs' },
+            { label: 'GitHub', link: 'https://github.com/hamna-zahid1/physical-ai-humanoid-textbook' },
+            { label: 'Community', link: 'https://github.com/hamna-zahid1/physical-ai-humanoid-textbook/discussions' },
+            { label: 'Updates', link: 'https://github.com/hamna-zahid1/physical-ai-humanoid-textbook/releases' }
+          ].map(item => (
+            <li key={item.label} style={{ marginBottom: '10px' }}>
+              <a href={item.link} target={item.link.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" style={{ ...typography.body, color: colors.textSecondary, textDecoration: 'none', fontSize: '14px' }}>{item.label}</a>
             </li>
           ))}
         </ul>
@@ -698,7 +725,7 @@ const Footer = () => (
       fontSize: '14px',
       color: colors.textSecondary
     }}>
-      © 2024 Physical AI. Open source and free forever.
+      © {new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Open source and free forever.
     </div>
   </footer>
 );

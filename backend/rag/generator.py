@@ -1,76 +1,68 @@
 import os
-from groq import AsyncGroq
+from openai import AsyncOpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
 
 class Generator:
-    def __init__(self, model_name: str = "llama-3.3-70b-versatile"):
-        api_key = os.getenv("GROQ_API_KEY")
+    def __init__(self, model_name: str = "meta-llama/Llama-3.1-8B-Instruct:cerebras"):
+        api_key = os.getenv("HF_TOKEN")
         if not api_key:
-            raise ValueError("GROQ_API_KEY environment variable is required")
+            raise ValueError("HF_TOKEN environment variable is required")
 
-        self.client = AsyncGroq(api_key=api_key)
+        self.client = AsyncOpenAI(
+            base_url="https://router.huggingface.co/v1",
+            api_key=api_key,
+        )
         self.model_name = model_name
 
+    def _build_messages(self, question: str, context: str) -> list:
+        system_prompt = (
+            "You are a helpful assistant for a Physical AI and Humanoid Robotics textbook. "
+            "Answer questions using only the provided context. "
+            "If the user sends a greeting or casual message, respond warmly and briefly. "
+            "If the context is insufficient to answer a specific question, say so clearly and concisely. "
+            "Do not speculate or repeat unrelated information from the context."
+        )
+
+        # Detect greetings / non-questions
+        is_conversational = not context.strip() or len(question.strip().split()) <= 5 and "?" not in question
+
+        if is_conversational:
+            user_content = question
+        else:
+            user_content = f"Context:\n{context}\n\nQuestion: {question}"
+
+        return [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_content},
+        ]
+
     async def generate_response(self, question: str, context: str) -> str:
-        """
-        Generate answer using Groq LLM based on question and context
-        """
         if not question.strip():
             return "Please provide a question."
 
         try:
-            prompt = f"""You are a helpful assistant for a Physical AI and Humanoid Robotics textbook.
-
-Context: {context}
-
-Question: {question}
-
-Please provide a comprehensive and accurate answer based on the given context.
-If the context doesn't contain enough information to answer the question,
-please say so and explain what additional information would be needed."""
-
             response = await self.client.chat.completions.create(
                 model=self.model_name,
-                messages=[
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=1024,
-                temperature=0.7,
+                messages=self._build_messages(question, context),
+                max_tokens=512,
+                temperature=0.4,
             )
 
             text = response.choices[0].message.content
-            if text:
-                return text
-            else:
-                return "Unable to generate a response. Please try again."
+            return text.strip() if text else "Unable to generate a response. Please try again."
 
         except Exception as e:
             raise Exception(f"Error generating response: {str(e)}")
 
     async def generate_streaming_response(self, question: str, context: str):
-        """
-        Generate a streaming response
-        """
         try:
-            prompt = f"""You are a helpful assistant for a Physical AI and Humanoid Robotics textbook.
-
-Context: {context}
-
-Question: {question}
-
-Please provide a comprehensive and accurate answer based on the given context.
-If the context doesn't contain enough information to answer the question,
-please say so and explain what additional information would be needed."""
-
             stream = await self.client.chat.completions.create(
                 model=self.model_name,
-                messages=[
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=1024,
-                temperature=0.7,
+                messages=self._build_messages(question, context),
+                max_tokens=512,
+                temperature=0.4,
                 stream=True,
             )
 

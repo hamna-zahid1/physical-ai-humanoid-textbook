@@ -4,27 +4,547 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Your custom color palette */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* Primary colors - Copper accent */
+  --ifm-color-primary: #B87333;
+  --ifm-color-primary-dark: #A5662E;
+  --ifm-color-primary-darker: #9E602C;
+  --ifm-color-primary-darkest: #824F24;
+  --ifm-color-primary-light: #C08047;
+  --ifm-color-primary-lighter: #C48752;
+  --ifm-color-primary-lightest: #CF9B6E;
+  
+  /* Background and text colors */
+  --ifm-background-color: #FFFFFF;
+  --ifm-background-surface-color: #F5F5F5;
+  --ifm-font-color-base: #0A0A0A;
+  --ifm-heading-color: #0A0A0A;
+  --ifm-font-color-secondary: #666666;
+  
+  /* Typography */
+  --ifm-font-family-base: 'Georgia', serif;
+  --ifm-font-family-monospace: 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
+  --ifm-heading-font-family: 'Montserrat', sans-serif;
+  --ifm-heading-font-weight: 600;
+  --ifm-heading-letter-spacing: -0.02em;
+  
+  /* Code blocks */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-code-background: #F0F0F0;
+  --ifm-code-color: #B87333;
+  
+  /* Borders and cards */
+  --ifm-global-border-width: 1px;
+  --ifm-global-radius: 8px;
+  --ifm-card-background-color: #FFFFFF;
+  --ifm-card-border-color: #E5E5E5;
+  
+  /* Navigation */
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.8);
+  --ifm-navbar-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --ifm-navbar-link-color: #0A0A0A;
+  --ifm-navbar-link-hover-color: #B87333;
+  
+  /* Links */
+  --ifm-link-color: #B87333;
+  --ifm-link-hover-color: #9E602C;
+  --ifm-link-decoration: none;
+  
+  /* Tables */
+  --ifm-table-border-color: #E5E5E5;
+  --ifm-table-stripe-background: #F8F8F8;
+  
+  /* Highlighting */
+  --docusaurus-highlighted-code-line-bg: rgba(184, 115, 51, 0.1);
+  
+  /* Additional custom properties */
+  --site-color-favorite-background: #F8F8F8;
+  --site-color-tooltip: #0A0A0A;
+  --site-color-tooltip-background: #F8F8F8;
+  --site-color-svg-icon-favorite: #B87333;
+  --site-color-checkbox-checked-bg: #B87333;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark mode */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* Primary colors - Copper accent (slightly lighter for dark mode) */
+  --ifm-color-primary: #C48752;
+  --ifm-color-primary-dark: #B87333;
+  --ifm-color-primary-darker: #A5662E;
+  --ifm-color-primary-darkest: #824F24;
+  --ifm-color-primary-light: #CF9B6E;
+  --ifm-color-primary-lighter: #D9AF8A;
+  --ifm-color-primary-lightest: #E4C3A6;
+  
+  /* Background and text colors - Matching your textbook design */
+  --ifm-background-color: #0A0A0A;
+  --ifm-background-surface-color: #141414;
+  --ifm-font-color-base: #FFFFFF;
+  --ifm-heading-color: #FFFFFF;
+  --ifm-font-color-secondary: #A0A0A0;
+  
+  /* Code blocks in dark mode */
+  --ifm-code-background: #1E1E1E;
+  --ifm-code-color: #C48752;
+  
+  /* Cards in dark mode */
+  --ifm-card-background-color: #141414;
+  --ifm-card-border-color: #2A2A2A;
+  
+  /* Navigation in dark mode */
+  --ifm-navbar-background-color: rgba(10, 10, 10, 0.8);
+  --ifm-navbar-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --ifm-navbar-link-color: #FFFFFF;
+  --ifm-navbar-link-hover-color: #C48752;
+  
+  /* Links in dark mode */
+  --ifm-link-color: #C48752;
+  --ifm-link-hover-color: #D9AF8A;
+  
+  /* Tables in dark mode */
+  --ifm-table-border-color: #2A2A2A;
+  --ifm-table-stripe-background: #1A1A1A;
+  
+  /* Highlighting in dark mode */
+  --docusaurus-highlighted-code-line-bg: rgba(184, 115, 51, 0.2);
+  
+  /* Additional custom properties for dark mode */
+  --site-color-favorite-background: #1A1A1A;
+  --site-color-tooltip: #FFFFFF;
+  --site-color-tooltip-background: #141414;
+  --site-color-svg-icon-favorite: #C48752;
+  --site-color-checkbox-checked-bg: #C48752;
 }
+
+/* Additional global styles */
+:root {
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  
+  /* Better text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Navbar backdrop blur effect (matching your textbook design) */
+.navbar {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Custom link hover effects */
+a:not(.button):hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+/* Card hover effects */
+.card {
+  transition: all 0.3s ease;
+  border: 1px solid var(--ifm-card-border-color);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: var(--ifm-color-primary);
+}
+
+/* Button styles matching your textbook */
+.button {
+  border-radius: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: all 0.3s ease;
+  text-transform: none;
+}
+
+.button--primary {
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  border: none;
+}
+
+.button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(184, 115, 51, 0.3);
+}
+
+.button--secondary {
+  border: 1px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+.button--secondary:hover {
+  background-color: var(--ifm-color-primary);
+  color: var(--ifm-background-color);
+  border-color: var(--ifm-color-primary);
+}
+
+/* Table styles */
+table {
+  border: 1px solid var(--ifm-table-border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: var(--ifm-color-primary);
+  color: var(--ifm-background-color);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Code block styles */
+.prism-code {
+  border-radius: 8px;
+  border: 1px solid var(--ifm-table-border-color);
+}
+
+/* Footer styles */
+.footer {
+  background-color: var(--ifm-background-surface-color);
+  border-top: 1px solid var(--ifm-table-border-color);
+}
+
+/* Sidebar styles */
+.menu {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+.menu__link--active {
+  color: var(--ifm-color-primary) !important;
+  background-color: rgba(184, 115, 51, 0.1);
+}
+
+/* Blog post styles */
+.avatar__name {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pagination-nav__link {
+  border: 1px solid var(--ifm-table-border-color);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-2px);
+}
+
+/* TOC styles */
+.table-of-contents {
+  border-left: 2px solid var(--ifm-table-border-color);
+}
+
+.table-of-contents__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+/* Search bar styles */
+.navbar__search-input {
+  border-radius: 30px;
+  border: 1px solid var(--ifm-table-border-color);
+  background-color: var(--ifm-background-surface-color);
+  transition: all 0.3s ease;
+}
+
+.navbar__search-input:focus {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px rgba(184, 115, 51, 0.2);
+  width: 200px;
+}
+
+/* Admonition styles */
+.alert {
+  border-radius: 8px;
+  border-left-width: 4px;
+  border-left-color: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-table-border-color);
+}
+
+/* Tabs styles */
+.tabs {
+  border-bottom: 2px solid var(--ifm-table-border-color);
+}
+
+.tabs__item {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  border-radius: 8px 8px 0 0;
+}
+
+.tabs__item--active {
+  color: var(--ifm-color-primary);
+  border-bottom-color: var(--ifm-color-primary);
+}
+
+/* Pagination */
+.pagination {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Breadcrumbs */
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--ifm-color-primary);
+  background-color: rgba(184, 115, 51, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ifm-background-surface-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ifm-table-border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-color-primary);
+}
+
+/* Code block title */
+.code-block-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-table-border-color);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+
+.footer--dark {
+  --ifm-footer-background-color: #0A0A0A !important;
+  --ifm-footer-color: #A0A0A0 !important;
+  --ifm-footer-link-color: #A0A0A0 !important;
+  --ifm-footer-link-hover-color: #B87333 !important;
+  --ifm-footer-title-color: #FFFFFF !important;
+}
+
+.footer {
+  border-top: 1px solid #2A2A2A !important;
+  padding: 60px 40px 30px !important;
+  width: 100%;
+}
+
+/* Main footer container */
+.footer .container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+/* Footer links grid */
+.footer__links {
+  display: grid !important;
+  grid-template-columns: 2fr 1fr 1fr !important; /* Brand column takes 2fr, others 1fr each */
+  gap: 40px !important;
+  margin-bottom: 40px !important;
+}
+
+/* Brand/About section */
+.footer__col:first-child {
+  grid-column: span 1;
+}
+
+.footer__col:first-child .footer__title {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  margin-bottom: 16px !important;
+  color: #FFFFFF !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Brand description text */
+.footer__col:first-child .footer__items {
+  list-style: none !important;
+  padding: 0 !important;
+}
+
+.footer__col:first-child .footer__items li {
+  font-family: 'Georgia', serif !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  color: #A0A0A0 !important;
+  margin-bottom: 0 !important;
+  max-width: 300px !important;
+}
+
+/* Other columns titles */
+.footer__title {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  margin-bottom: 20px !important;
+  color: #FFFFFF !important;
+}
+
+/* Footer links */
+.footer__link-item {
+  font-family: 'Georgia', serif !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  color: #A0A0A0 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+  display: inline-block !important;
+  padding: 2px 0 !important;
+}
+
+.footer__link-item:hover {
+  color: #B87333 !important;
+  text-decoration: none !important;
+}
+
+/* Footer items list */
+.footer__items {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.footer__items li {
+  margin-bottom: 10px !important;
+}
+
+/* Copyright section */
+.footer__copyright {
+  font-family: 'Georgia', serif !important;
+  font-size: 14px !important;
+  color: #A0A0A0 !important;
+  border-top: 1px solid #2A2A2A !important;
+  padding-top: 30px !important;
+  margin-top: 0 !important;
+  text-align: center !important;
+}
+
+/* Responsive Design */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 996px) {
+  .footer {
+    padding: 50px 30px 25px !important;
+  }
+  
+  .footer__links {
+    grid-template-columns: 1fr 1fr !important; /* 2 columns for tablet */
+    gap: 30px !important;
+  }
+  
+  /* Brand column spans full width on tablet */
+  .footer__col:first-child {
+    grid-column: 1 / -1 !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .footer__col:first-child .footer__items li {
+    max-width: 100% !important;
+  }
+  
+  .footer__title {
+    font-size: 18px !important;
+  }
+}
+
+/* Mobile (up to 767px) */
+@media (max-width: 767px) {
+  .footer {
+    padding: 40px 20px 20px !important;
+  }
+  
+  .footer__links {
+    grid-template-columns: 1fr !important; /* Single column for mobile */
+    gap: 30px !important;
+  }
+  
+  .footer__col {
+    text-align: left !important;
+  }
+  
+  .footer__col:first-child {
+    margin-bottom: 10px !important;
+  }
+  
+  .footer__col:first-child .footer__title {
+    font-size: 22px !important;
+  }
+  
+  .footer__title {
+    margin-bottom: 15px !important;
+    font-size: 18px !important;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  /* Optional: Add accordion functionality for mobile */
+  .footer__title::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    color: #B87333;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  /* Hide items initially on mobile (optional - remove if you want them always visible) */
+  .footer__items {
+    display: block; /* Change to 'none' if you want collapsible sections */
+  }
+  
+  .footer__items li {
+    margin-bottom: 12px !important;
+  }
+  
+  .footer__link-item {
+    font-size: 15px !important;
+    padding: 4px 0 !important;
+  }
+  
+  .footer__copyright {
+    font-size: 13px !important;
+    padding-top: 25px !important;
+  }
+}
+
+/* Small mobile (up to 480px) */
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 15px 15px !important;
+  }
+  
+  .footer__col:first-child .footer__title {
+    font-size: 20px !important;
+  }
+  
+  .footer__col:first-child .footer__items li {
+    font-size: 13px !important;
+  }
+  
+  .footer__title {
+    font-size: 16px !important;
+  }
+  
+  .footer__link-item {
+    font-size: 14px !important;
+  }
+}
+

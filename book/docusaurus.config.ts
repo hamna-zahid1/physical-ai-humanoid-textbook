@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics',
   tagline: 'Master Embodied Intelligence',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/icon.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -43,8 +43,6 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/hamna-zahid1/physical-ai-humanoid-textbook/tree/main/book/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -56,14 +54,22 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+    
+    // Add colorMode configuration here
     colorMode: {
-      respectPrefersColorScheme: true,
+      // Disable the theme switch button
+      disableSwitch: true,
+      // Set default mode to dark (matching your design)
+      defaultMode: 'dark',
+      // Don't respect user's system preference
+      respectPrefersColorScheme: false,
     },
+    
     navbar: {
       title: 'Physical AI & Humanoid Robotics',
       logo: {
         alt: 'Physical AI & Humanoid Robotics Logo',
-        src: 'img/logo.svg',
+        src: 'img/icon.png',
       },
       items: [
         {
@@ -82,43 +88,46 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
+        // Brand/About section - This will be the first column
         {
-          title: 'Textbook',
+          title: 'Physical AI',
           items: [
             {
-              label: 'Introduction',
-              to: '/docs/intro',
+              html: 'Open-source education for the next generation of robotics engineers.',
             },
           ],
         },
+        // Curriculum section
         {
-          title: 'Community',
+          title: 'Curriculum',
           items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
+            { label: 'Introduction', to: '/docs/intro' },
+            { label: 'Foundations', to: '/docs/part1-foundations/chapter1' },
+            { label: 'ROS 2', to: '/docs/part2-ros2/chapter1' },
+            { label: 'Modeling', to: '/docs/part3-robot-modeling/chapter1' },
           ],
         },
+        // Resources section
         {
-          title: 'More',
+          title: 'Resources',
           items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/hamna-zahid1/physical-ai-humanoid-textbook',
+            { label: 'Documentation', to: '/docs' },
+            { 
+              label: 'GitHub', 
+              href: 'https://github.com/hamna-zahid1/physical-ai-humanoid-textbook' 
+            },
+            { 
+              label: 'Community', 
+              href: 'https://github.com/hamna-zahid1/physical-ai-humanoid-textbook/discussions' 
+            },
+            { 
+              label: 'Updates', 
+              href: 'https://github.com/hamna-zahid1/physical-ai-humanoid-textbook/releases' 
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Open source and free forever.`,
     },
     prism: {
       theme: prismThemes.github,

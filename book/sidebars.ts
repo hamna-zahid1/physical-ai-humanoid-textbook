@@ -15,6 +15,8 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   // Manual sidebar for the Physical AI & Humanoid Robotics textbook
   textbookSidebar: [
+    'intro',
+    'index',
     {
       type: 'category',
       label: 'Part 1: Foundations',
