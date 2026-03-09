@@ -1,21 +1,18 @@
-import os
-from google import genai
-from google.genai import types
-from dotenv import load_dotenv
-
-load_dotenv()
+from sentence_transformers import SentenceTransformer
+import asyncio
 
 class Embedder:
     def __init__(self):
-        self.client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
-        self.model = "models/gemini-embedding-001"
+        self.model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
     async def embed_text(self, text: str) -> list[float]:
         try:
-            result = self.client.models.embed_content(
-                model=self.model,
-                contents=text,
+            # Run in executor since sentence_transformers is synchronous
+            loop = asyncio.get_event_loop()
+            embedding = await loop.run_in_executor(
+                None,
+                lambda: self.model.encode(text).tolist()
             )
-            return result.embeddings[0].values
+            return embedding
         except Exception as e:
             raise Exception(f"Error embedding text: {str(e)}")

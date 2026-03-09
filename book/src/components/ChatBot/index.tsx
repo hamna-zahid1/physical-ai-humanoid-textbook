@@ -37,13 +37,19 @@ const ChatBot = () => {
 
       if (response.ok) {
         // Backend returns SSE format: "data: {...}\n\n"
+        // const text = await response.text();
+        // const jsonStr = text.replace(/^data:\s*/m, '').trim();
+        // const data = JSON.parse(jsonStr);
         const text = await response.text();
+        console.log('Raw response:', text);
         const jsonStr = text.replace(/^data:\s*/m, '').trim();
+        console.log('Parsed JSON string:', jsonStr);
         const data = JSON.parse(jsonStr);
-
+        console.log('Data object:', data);
         const botText = data.response || data.answer || 'No response received';
         const botMessage = { text: botText, sender: 'bot' } as const;
         setMessages(prev => [...prev, botMessage]);
+
       } else {
         const errorMessage = { text: 'Error: Could not get response from server', sender: 'bot' } as const;
         setMessages(prev => [...prev, errorMessage]);

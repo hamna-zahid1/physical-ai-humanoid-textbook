@@ -13,7 +13,7 @@ import markdown
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-async def read_markdown_files(docs_dir: str = "../../book/docs") -> List[dict]:
+async def read_markdown_files(docs_dir: str = "../book/docs") -> List[dict]:
     """
     Read all markdown files from the specified directory and extract content
     """

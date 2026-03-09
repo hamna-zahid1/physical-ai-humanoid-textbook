@@ -40,7 +40,7 @@ class Retriever:
         except Exception as e:
             raise Exception(f"Error searching Qdrant: {str(e)}")
 
-    async def initialize_collection(self, vector_size: int = 3072):
+    async def initialize_collection(self, vector_size: int = 384):
         """
         Initialize the collection if it doesn't exist
         """
